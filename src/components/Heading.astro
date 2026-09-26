@@ -1,0 +1,14 @@
+---
+import { splitHighlight } from "../lib/config";
+interface Props { eyebrow?: string; title: string; highlight?: string; subtitle?: string; align?: "left" | "center"; tag?: string; id?: string }
+const { eyebrow, title, highlight, subtitle, align = "left", tag = "h2", id } = Astro.props;
+const Tag = tag as any;
+const parts = splitHighlight(title, highlight);
+---
+<div class={`heading heading--${align}`} data-reveal-group>
+  {eyebrow && <p class="eyebrow" data-reveal>{eyebrow}</p>}
+  <Tag class="title" id={id} data-split>
+    {parts.map((p) => p.hl ? <em class="hl">{p.text}</em> : <Fragment>{p.text}</Fragment>)}
+  </Tag>
+  {subtitle && <p class="lead" data-reveal>{subtitle}</p>}
+</div>

@@ -1,0 +1,82 @@
+{
+  "tech-ia": {
+    "label": "Tech / IA / Automação",
+    "fonts": { "heading": "space-grotesk", "body": "inter" },
+    "radius": 18,
+    "pattern": "grid",
+    "highlight": "gradient",
+    "headingWeight": 600,
+    "headingTracking": "-0.035em",
+    "eyebrowStyle": "line"
+  },
+  "corporativo": {
+    "label": "Corporativo / Consultoria / Finanças",
+    "fonts": { "heading": "manrope", "body": "inter" },
+    "radius": 14,
+    "pattern": "lines",
+    "highlight": "color",
+    "headingWeight": 700,
+    "headingTracking": "-0.03em",
+    "eyebrowStyle": "line"
+  },
+  "saude": {
+    "label": "Saúde / Clínicas / Odontologia",
+    "fonts": { "heading": "plus-jakarta-sans", "body": "dm-sans" },
+    "radius": 28,
+    "pattern": "dots",
+    "highlight": "color",
+    "headingWeight": 700,
+    "headingTracking": "-0.025em",
+    "eyebrowStyle": "pill"
+  },
+  "juridico": {
+    "label": "Jurídico / Contabilidade / Serviços de confiança",
+    "fonts": { "heading": "cormorant-garamond", "body": "manrope" },
+    "radius": 4,
+    "pattern": "lines",
+    "highlight": "italic-serif",
+    "headingWeight": 600,
+    "headingTracking": "-0.01em",
+    "eyebrowStyle": "line"
+  },
+  "varejo": {
+    "label": "Varejo / E-commerce / Food",
+    "fonts": { "heading": "bricolage-grotesque", "body": "outfit" },
+    "radius": 22,
+    "pattern": "glow",
+    "highlight": "marker",
+    "headingWeight": 700,
+    "headingTracking": "-0.035em",
+    "eyebrowStyle": "pill"
+  },
+  "beleza": {
+    "label": "Beleza / Estética / Bem-estar",
+    "fonts": { "heading": "fraunces", "body": "dm-sans" },
+    "radius": 30,
+    "pattern": "glow",
+    "highlight": "italic-serif",
+    "headingWeight": 500,
+    "headingTracking": "-0.02em",
+    "eyebrowStyle": "pill"
+  },
+  "industria": {
+    "label": "Indústria / Engenharia / Construção",
+    "fonts": { "heading": "archivo", "body": "inter" },
+    "radius": 6,
+    "pattern": "grid",
+    "highlight": "color",
+    "headingWeight": 800,
+    "headingTracking": "-0.03em",
+    "eyebrowStyle": "line"
+  },
+  "educacao": {
+    "label": "Educação / Cursos / Mentorias",
+    "fonts": { "heading": "sora", "body": "plus-jakarta-sans" },
+    "radius": 20,
+    "pattern": "dots",
+    "highlight": "marker",
+    "headingWeight": 700,
+    "headingTracking": "-0.03em",
+    "eyebrowStyle": "pill"
+  }
+}

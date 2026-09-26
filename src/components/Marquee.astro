@@ -1,0 +1,12 @@
+---
+import { site, t } from "../lib/config";
+const words: string[] = site.marquee && site.marquee.length ? site.marquee : (site.services.items || []).map((s: any) => s.short || s.title);
+const row = words.concat(words);
+---
+<div class="marquee" data-tone={t.tones.marquee} aria-hidden="true">
+  <div class="marquee__track">
+    {[0, 1].map(() => (
+      <ul>{row.map((w) => <li><span class="marquee__star">✦</span>{w}</li>)}</ul>
+    ))}
+  </div>
+</div>

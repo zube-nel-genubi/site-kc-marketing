@@ -1,0 +1,63 @@
+---
+import { site, t, splitHighlight } from "../lib/config";
+import Media from "./Media.astro";
+import Icon from "./Icon.astro";
+const h = site.hero || {};
+const parts = splitHighlight(h.title, h.highlight);
+const chips = (site.services && site.services.items || []).slice(0, 4);
+const p1 = h.ctaPrimary || { label: "Conheça nossos serviços", href: "#servicos" };
+const p2 = h.ctaSecondary || { label: "Fale com a equipe", href: "#contato" };
+---
+<section class="hero" id="topo" data-tone={t.tones.hero}>
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <div class="orb orb--1" aria-hidden="true" data-parallax="-0.25"></div>
+  <div class="orb orb--2" aria-hidden="true" data-parallax="0.2"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      {h.eyebrow && <p class="hero__eyebrow" data-hero-in><span class="status-dot"></span>{h.eyebrow}</p>}
+      <h1 class="hero__title" data-split="hero">
+        {parts.map((p) => p.hl ? <em class="hl">{p.text}</em> : <Fragment>{p.text}</Fragment>)}
+      </h1>
+      {h.subtitle && <p class="hero__sub" data-hero-in>{h.subtitle}</p>}
+      <div class="hero__ctas" data-hero-in>
+        <a class="btn btn--primary btn--lg" href={p1.href} data-magnetic>{p1.label}<Icon name="arrow-right" size={18} /></a>
+        <a class="btn btn--ghost btn--lg" href={p2.href}>{p2.label}</a>
+      </div>
+      {h.badges && h.badges.length > 0 && (
+        <ul class="hero__badges" data-hero-in>
+          {h.badges.map((b: string) => <li><Icon name="check" size={16} />{b}</li>)}
+        </ul>
+      )}
+    </div>
+    <div class="hero__visual" data-hero-visual>
+      <svg class="hero__rings" viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="290" />
+        <circle cx="300" cy="300" r="220" />
+        <circle cx="300" cy="300" r="150" />
+        <circle class="ring-dot" cx="300" cy="10" r="5" />
+        <circle class="ring-dot ring-dot--2" cx="80" cy="300" r="4" />
+      </svg>
+      <div class="hero__frame" data-tilt>
+        <Media src={h.image} alt={h.imageAlt || site.brand.name} w={1200} eager class="hero__media" />
+        <div class="hero__shine" aria-hidden="true"></div>
+      </div>
+      {h.floating && (
+        <div class="float-card float-card--stat" data-float="1">
+          <strong data-count={h.floating.value} data-prefix={h.floating.prefix || ""} data-suffix={h.floating.suffix || ""}>{h.floating.prefix}{h.floating.value}{h.floating.suffix}</strong>
+          <span>{h.floating.label}</span>
+        </div>
+      )}
+      {chips.length > 0 && (
+        <div class="float-card float-card--chips" data-float="2">
+          <p>{h.chipsTitle || "O que fazemos"}</p>
+          <ul data-chip-cycle>
+            {chips.map((s: any, i: number) => (
+              <li class={i === 0 ? "is-on" : ""}><span class="chip-ico"><Icon name={s.icon || "sparkles"} size={16} /></span>{s.short || s.title}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+  <a href="#sobre" class="scroll-cue" aria-label="Rolar para a próxima seção"><span></span></a>
+</section>

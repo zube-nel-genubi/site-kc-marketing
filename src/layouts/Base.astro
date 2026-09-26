@@ -1,0 +1,89 @@
+---
+import "../styles/fonts.gen.css";
+import "../styles/global.css";
+import { site, t, img } from "../lib/config";
+
+const p = t.palette || {};
+function rgb(hex: string): string {
+  let h = String(hex || "#000").replace("#", "");
+  if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+  const n = parseInt(h.slice(0, 6), 16);
+  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+}
+function tone(o: any) {
+  o = o || {};
+  let s = `--bg:${o.bg};--surface:${o.surface};--surface-2:${o.surface2 || o.surface};--text:${o.text};--muted:${o.muted};--border:${o.border};--bg-rgb:${rgb(o.bg)};--text-rgb:${rgb(o.text)};`;
+  // Um tom pode sobrescrever a cor de destaque (ex.: primária clara demais sobre fundo claro)
+  if (o.primary) s += `--primary:${o.primary};--primary-rgb:${rgb(o.primary)};`;
+  if (o.onPrimary) s += `--on-primary:${o.onPrimary};`;
+  if (o.accent) s += `--accent:${o.accent};--accent-rgb:${rgb(o.accent)};`;
+  return s;
+}
+const base = p.base || {};
+const alt = p.alt || {};
+const css = `
+:root{--primary:${p.primary};--on-primary:${p.onPrimary};--accent:${p.accent || p.primary};--primary-rgb:${rgb(p.primary)};--accent-rgb:${rgb(p.accent || p.primary)};
+--radius:${t.radius}px;--radius-sm:${Math.max(2, Math.round(t.radius * 0.55))}px;--radius-lg:${Math.round(t.radius * 1.5)}px;--btn-radius:${t.radius >= 14 ? "999px" : Math.max(2, Math.round(t.radius * 0.8)) + "px"};
+--font-h:${t.fontHeading};--font-b:${t.fontBody};--h-weight:${t.headingWeight};--h-track:${t.headingTracking};${tone(base)}}
+[data-tone="base"]{${tone(base)}}
+[data-tone="alt"]{${tone(alt)}}
+[data-tone="brand"]{--bg:${p.primary};--surface:rgba(255,255,255,.08);--surface-2:rgba(255,255,255,.12);--text:${p.onPrimary};--muted:${p.onPrimary};--border:rgba(${rgb(p.onPrimary)},.2);--bg-rgb:${rgb(p.primary)};--text-rgb:${rgb(p.onPrimary)};}
+`;
+const seo = site.seo || {};
+const title = seo.title || `${site.brand.name} — ${site.brand.tagline || site.niche || ""}`;
+const description = seo.description || (site.hero && site.hero.subtitle) || "";
+const og = seo.ogImage ? img(seo.ogImage, 1200) : (site.hero && site.hero.image ? img(site.hero.image, 1200) : "");
+const c = site.contact || {};
+const ld: any = {
+  "@context": "https://schema.org",
+  "@type": seo.schemaType || "Organization",
+  name: site.brand.name,
+  description,
+  url: seo.url || undefined,
+  email: c.email || undefined,
+  telephone: c.phone || (c.whatsapp ? `+${String(c.whatsapp).replace(/\D/g, "")}` : undefined),
+  address: c.address ? { "@type": "PostalAddress", streetAddress: c.address } : undefined,
+  sameAs: (c.socials || []).map((s: any) => s.url)
+};
+const themeColor = base.bg || "#000";
+---
+<!doctype html>
+<html lang={site.lang || "pt-BR"} class={`no-js pattern-${t.pattern} hl-${t.highlight} eyebrow-${t.eyebrowStyle || "line"} ${t.headingSerif ? "h-serif" : ""}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={themeColor} />
+    <link rel="icon" href={site.brand.favicon || "/favicon.svg"} />
+    {seo.url && <link rel="canonical" href={seo.url} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {og && <meta property="og:image" content={og} />}
+    <meta property="og:locale" content={(site.lang || "pt-BR").replace("-", "_")} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <style is:inline set:html={css}></style>
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.className = d.className.replace("no-js", "js");
+        var q = location.search || "";
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (q.indexOf("noanim") > -1 || reduce) { d.className += " no-anim"; return; }
+        d.className += " anim";
+        // Segurança: se o JS de animação não subir em 3,5s, mostra tudo.
+        setTimeout(function () { if (!window.__animReady) d.className = d.className.replace(" anim", " no-anim"); }, 3500);
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(ld)}></script>
+  </head>
+  <body data-tone="base">
+    <div class="progress" aria-hidden="true"><span></span></div>
+    <slot />
+    <script>
+      import "../scripts/main.ts";
+    </script>
+  </body>
+</html>

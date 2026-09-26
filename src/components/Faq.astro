@@ -1,0 +1,30 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+import Icon from "./Icon.astro";
+import { waLink } from "../lib/config";
+const f = site.faq || {};
+const c = site.contact || {};
+---
+<section class="section faq" id="faq" data-tone={t.tones.faq}>
+  <div class="container faq__grid">
+    <div>
+      <div class="sticky">
+        <Heading eyebrow={f.eyebrow} title={f.title} highlight={f.highlight} subtitle={f.subtitle} />
+        {c.whatsapp && (
+          <a class="text-link" data-reveal href={waLink(c.whatsapp, c.whatsappMessage)} target="_blank" rel="noopener">
+            {f.moreLabel || "Ainda com dúvidas? Fale no WhatsApp"}<Icon name="arrow-up-right" size={16} />
+          </a>
+        )}
+      </div>
+    </div>
+    <div class="accordion" data-reveal-group>
+      {(f.items || []).map((it: any, i: number) => (
+        <details class="acc" data-reveal data-acc open={i === 0}>
+          <summary><span>{it.q}</span><span class="acc__icon" aria-hidden="true"></span></summary>
+          <div class="acc__body"><p>{it.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

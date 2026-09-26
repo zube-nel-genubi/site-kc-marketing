@@ -1,0 +1,32 @@
+---
+import { site, t, nav, waLink } from "../lib/config";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+const c = site.contact || {};
+const cta = (site.header && site.header.cta) || { label: "Fale conosco", href: "#contato" };
+---
+<header class="header" data-tone={t.tones.header} data-header>
+  <div class="container header__inner">
+    <Logo />
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        {nav.map((n) => <li><a href={n.href} data-nav>{n.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="header__actions">
+      {c.whatsapp && (
+        <a class="status-pill" href={waLink(c.whatsapp, c.whatsappMessage)} target="_blank" rel="noopener">
+          <span class="status-dot"></span>{(site.header && site.header.statusLabel) || "Atendimento online"}
+        </a>
+      )}
+      <a class="btn btn--primary btn--sm" href={cta.href} data-magnetic>{cta.label}<Icon name="arrow-up-right" size={16} /></a>
+      <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" data-burger><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" data-mobile-menu data-tone={t.tones.header}>
+    <ul>
+      {nav.map((n, i) => <li><a href={n.href} data-nav><small>{String(i + 1).padStart(2, "0")}</small>{n.label}</a></li>)}
+    </ul>
+    <a class="btn btn--primary" href={cta.href}>{cta.label}</a>
+  </div>
+</header>

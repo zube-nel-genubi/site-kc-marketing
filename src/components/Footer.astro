@@ -1,0 +1,52 @@
+---
+import { site, t, nav, waLink } from "../lib/config";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import Social from "./Social.astro";
+const c = site.contact || {};
+const f = site.footer || {};
+const year = new Date().getFullYear();
+const services = (site.services && site.services.items || []).slice(0, 6);
+---
+<footer class="footer" data-tone={t.tones.footer}>
+  <div class="container">
+    <div class="footer__cta" data-reveal>
+      <p class="footer__big">{f.headline || site.brand.tagline}</p>
+      <a class="btn btn--primary btn--lg" href="#contato" data-magnetic>{f.ctaLabel || "Iniciar uma conversa"}<Icon name="arrow-up-right" size={18} /></a>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <Logo />
+        <p>{f.text || (site.hero && site.hero.subtitle)}</p>
+        {c.socials && c.socials.length > 0 && (
+          <ul class="socials">
+            {c.socials.map((s: any) => (
+              <li><a href={s.url} target="_blank" rel="noopener" aria-label={s.network}><Social network={s.network} /></a></li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>{nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>{services.map((s: any) => <li><a href="#servicos">{s.short || s.title}</a></li>)}</ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          {c.email && <li><a href={`mailto:${c.email}`}>{c.email}</a></li>}
+          {c.whatsapp && <li><a href={waLink(c.whatsapp, c.whatsappMessage)} target="_blank" rel="noopener">{c.whatsappDisplay || c.whatsapp}</a></li>}
+          {c.phone && <li>{c.phone}</li>}
+          {c.address && <li>{c.address}</li>}
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© {year} {f.legalName || site.brand.name}. Todos os direitos reservados.{f.cnpj && ` CNPJ ${f.cnpj}`}</span>
+      <a href="#topo" class="to-top">Voltar ao topo <Icon name="arrow-up" size={16} /></a>
+    </div>
+  </div>
+</footer>

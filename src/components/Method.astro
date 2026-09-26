@@ -1,0 +1,28 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+const m = site.method || {};
+const steps = m.steps || [];
+---
+<section class="section method" id="metodo" data-tone={t.tones.method}>
+  <div class="container method__grid">
+    <div class="method__head">
+      <div class="sticky">
+        <Heading eyebrow={m.eyebrow} title={m.title} highlight={m.highlight} subtitle={m.subtitle} />
+      </div>
+    </div>
+    <ol class="timeline" data-timeline>
+      <span class="timeline__rail" aria-hidden="true"><span class="timeline__fill" data-timeline-fill></span></span>
+      {steps.map((st: any, i: number) => (
+        <li class="step" data-step>
+          <span class="step__num">{String(i + 1).padStart(2, "0")}</span>
+          <div class="step__body">
+            <h3>{st.title}</h3>
+            <p>{st.description}</p>
+            {st.duration && <span class="step__meta">{st.duration}</span>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

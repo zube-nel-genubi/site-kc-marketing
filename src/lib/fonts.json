@@ -1,0 +1,59 @@
+{
+  "inter": {
+    "pkg": "@fontsource-variable/inter",
+    "family": "Inter Variable"
+  },
+  "manrope": {
+    "pkg": "@fontsource-variable/manrope",
+    "family": "Manrope Variable"
+  },
+  "plus-jakarta-sans": {
+    "pkg": "@fontsource-variable/plus-jakarta-sans",
+    "family": "Plus Jakarta Sans Variable",
+    "italic": true
+  },
+  "space-grotesk": {
+    "pkg": "@fontsource-variable/space-grotesk",
+    "family": "Space Grotesk Variable"
+  },
+  "sora": {
+    "pkg": "@fontsource-variable/sora",
+    "family": "Sora Variable"
+  },
+  "outfit": {
+    "pkg": "@fontsource-variable/outfit",
+    "family": "Outfit Variable"
+  },
+  "dm-sans": {
+    "pkg": "@fontsource-variable/dm-sans",
+    "family": "DM Sans Variable",
+    "italic": true
+  },
+  "archivo": {
+    "pkg": "@fontsource-variable/archivo",
+    "family": "Archivo Variable",
+    "italic": true
+  },
+  "bricolage-grotesque": {
+    "pkg": "@fontsource-variable/bricolage-grotesque",
+    "family": "Bricolage Grotesque Variable"
+  },
+  "fraunces": {
+    "pkg": "@fontsource-variable/fraunces",
+    "family": "Fraunces Variable",
+    "italic": true,
+    "serif": true
+  },
+  "playfair-display": {
+    "pkg": "@fontsource-variable/playfair-display",
+    "family": "Playfair Display Variable",
+    "italic": true,
+    "serif": true
+  },
+  "cormorant-garamond": {
+    "pkg": "@fontsource-variable/cormorant-garamond",
+    "family": "Cormorant Garamond Variable",
+    "italic": true,
+    "serif": true
+  }
+}

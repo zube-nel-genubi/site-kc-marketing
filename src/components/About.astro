@@ -1,0 +1,46 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+import Media from "./Media.astro";
+import Icon from "./Icon.astro";
+const a = site.about || {};
+const metrics = (a.metrics || []).filter((m: any) => m && m.value !== undefined && m.value !== "");
+---
+<section class="section about" id="sobre" data-tone={t.tones.about}>
+  <div class="container about__grid">
+    <div class="about__copy">
+      <Heading eyebrow={a.eyebrow} title={a.title} highlight={a.highlight} />
+      <div class="prose" data-reveal-group>
+        {(a.text || []).map((p: string) => <p data-reveal>{p}</p>)}
+      </div>
+      {a.bullets && a.bullets.length > 0 && (
+        <ul class="checklist" data-reveal-group>
+          {a.bullets.map((b: string) => <li data-reveal><span><Icon name="check" size={14} stroke={2.4} /></span>{b}</li>)}
+        </ul>
+      )}
+    </div>
+    <div class="about__visual">
+      <div class="about__img" data-clip-reveal>
+        <Media src={a.image} alt={a.imageAlt || ""} w={1100} />
+      </div>
+      {a.card && (
+        <div class="about__card" data-float="1">
+          <Icon name={a.card.icon || "award"} size={22} />
+          <div><strong>{a.card.title}</strong><span>{a.card.text}</span></div>
+        </div>
+      )}
+    </div>
+  </div>
+  {metrics.length > 0 && (
+    <div class="container">
+      <ul class="metrics" data-reveal-group>
+        {metrics.map((m: any) => (
+          <li data-reveal>
+            <strong><span data-count={m.value} data-prefix={m.prefix || ""} data-suffix={m.suffix || ""}>{m.prefix}{m.value}{m.suffix}</span></strong>
+            <span>{m.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</section>

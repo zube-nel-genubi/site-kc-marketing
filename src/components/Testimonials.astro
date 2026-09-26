@@ -1,0 +1,34 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+import Icon from "./Icon.astro";
+const d = site.testimonials || {};
+const items = d.items || [];
+---
+<section class="section testimonials" id="depoimentos" data-tone={t.tones.testimonials}>
+  <div class="container">
+    <div class="split-head split-head--end">
+      <Heading eyebrow={d.eyebrow} title={d.title} highlight={d.highlight} />
+      <div class="carousel-nav" data-reveal>
+        <button type="button" class="round-btn" data-car-prev aria-label="Anterior"><Icon name="arrow-left" size={18} /></button>
+        <button type="button" class="round-btn" data-car-next aria-label="Próximo"><Icon name="arrow-right" size={18} /></button>
+      </div>
+    </div>
+    <div class="carousel" data-carousel data-reveal>
+      <div class="carousel__track" data-car-track>
+        {items.map((it: any) => (
+          <figure class="quote"><div class="quote__in">
+            <Icon name="quote" size={28} class="quote__mark" />
+            {it.rating && <div class="stars" aria-label={`${it.rating} de 5`}>{"★★★★★".slice(0, it.rating)}</div>}
+            <blockquote>{it.quote}</blockquote>
+            <figcaption>
+              <span class="avatar">{it.photo ? <img src={it.photo} alt="" loading="lazy" /> : String(it.name || "?").split(" ").map((w: string) => w[0]).slice(0, 2).join("").toUpperCase()}</span>
+              <span><strong>{it.name}</strong><small>{[it.role, it.company].filter(Boolean).join(" · ")}</small></span>
+            </figcaption>
+          </div></figure>
+        ))}
+      </div>
+    </div>
+    <div class="carousel-dots" data-car-dots aria-hidden="true"></div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+import Icon from "./Icon.astro";
+const s = site.services || {};
+const items = s.items || [];
+---
+<section class="section services" id="servicos" data-tone={t.tones.services}>
+  <div class="bg-pattern bg-pattern--soft" aria-hidden="true"></div>
+  <div class="container">
+    <div class="split-head">
+      <Heading eyebrow={s.eyebrow} title={s.title} highlight={s.highlight} />
+      {s.subtitle && <p class="lead" data-reveal>{s.subtitle}</p>}
+    </div>
+    <div class={`services__grid services__grid--${items.length % 3 === 0 ? 3 : items.length % 2 === 0 ? 2 : 3}`} data-reveal-group>
+      {items.map((it: any, i: number) => (
+        <article class="svc" data-reveal data-spotlight>
+          <div class="svc__top">
+            <span class="svc__icon"><Icon name={it.icon || "sparkles"} size={24} /></span>
+            <span class="svc__num">{String(i + 1).padStart(2, "0")}</span>
+          </div>
+          <h3>{it.title}</h3>
+          <p>{it.description}</p>
+          {it.deliverables && it.deliverables.length > 0 && (
+            <ul class="svc__list">
+              {it.deliverables.map((d: string) => <li>{d}</li>)}
+            </ul>
+          )}
+          {it.tags && it.tags.length > 0 && (
+            <div class="svc__tags">{it.tags.map((tg: string) => <span>{tg}</span>)}</div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+import { site } from "../lib/config";
+interface Props { class?: string }
+const { class: cls = "" } = Astro.props;
+const b = site.brand;
+const words = String(b.name).split(" ");
+---
+<a href="#topo" class={`logo ${cls}`} aria-label={`${b.name} — início`}>
+  {b.logo ? (
+    <img src={b.logo} alt={b.name} height="36" />
+  ) : (
+    <span class="logo__word">
+      <span class="logo__mark" aria-hidden="true"></span>
+      <span>{words[0]}{words.length > 1 && <span class="logo__rest"> {words.slice(1).join(" ")}</span>}</span>
+    </span>
+  )}
+</a>

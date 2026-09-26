@@ -1,0 +1,88 @@
+---
+import { site, t, waLink } from "../lib/config";
+import Heading from "./Heading.astro";
+import Icon from "./Icon.astro";
+const c = site.contact || {};
+const form = c.form || { provider: "mailto" };
+const services = (site.services && site.services.items || []).map((s: any) => s.title);
+const infos = [
+  c.whatsapp && { icon: "message-circle", label: "WhatsApp", value: c.whatsappDisplay || c.whatsapp, href: waLink(c.whatsapp, c.whatsappMessage), ext: true },
+  c.email && { icon: "mail", label: "E-mail", value: c.email, href: `mailto:${c.email}` },
+  c.phone && { icon: "phone", label: "Telefone", value: c.phone, href: `tel:${String(c.phone).replace(/[^\d+]/g, "")}` },
+  c.address && { icon: "map-pin", label: "Endereço", value: c.address, href: c.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}`, ext: true },
+  c.hours && { icon: "clock", label: "Horário", value: c.hours }
+].filter(Boolean) as any[];
+---
+<section class="section contact" id="contato" data-tone={t.tones.contact}>
+  <div class="orb orb--4" aria-hidden="true"></div>
+  <div class="container contact__grid">
+    <div class="contact__copy">
+      <Heading eyebrow={c.eyebrow || "Contato"} title={c.title || "Vamos conversar sobre o seu projeto"} highlight={c.highlight} subtitle={c.text} />
+      <ul class="contact__list" data-reveal-group>
+        {infos.map((i) => (
+          <li data-reveal>
+            <span class="contact__ico"><Icon name={i.icon} size={20} /></span>
+            <span>
+              <small>{i.label}</small>
+              {i.href ? <a href={i.href} target={i.ext ? "_blank" : undefined} rel={i.ext ? "noopener" : undefined}>{i.value}</a> : <span>{i.value}</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="form-card" data-reveal>
+      <div class="form-card__glow" aria-hidden="true"></div>
+      <form class="form" data-form
+        data-provider={form.provider || "mailto"}
+        data-endpoint={form.endpoint || ""}
+        data-key={form.accessKey || ""}
+        data-email={c.email || ""}
+        data-brand={site.brand.name}
+        novalidate>
+        <div class="form__head">
+          <h3>{form.title || "Envie sua mensagem"}</h3>
+          <p>{form.subtitle || "Responderemos em até 1 dia útil."}</p>
+        </div>
+        <div class="form__row">
+          <label class="field"><input name="nome" type="text" required autocomplete="name" placeholder=" " /><span>Nome completo *</span></label>
+          <label class="field"><input name="empresa" type="text" autocomplete="organization" placeholder=" " /><span>Empresa</span></label>
+        </div>
+        <div class="form__row">
+          <label class="field"><input name="email" type="email" required autocomplete="email" placeholder=" " /><span>E-mail *</span></label>
+          <label class="field"><input name="whatsapp" type="tel" required autocomplete="tel" inputmode="tel" placeholder=" " data-phone /><span>WhatsApp *</span></label>
+        </div>
+        {services.length > 0 && (
+          <label class="field field--select">
+            <select name="interesse" required>
+              <option value="" selected disabled></option>
+              {services.map((s: string) => <option value={s}>{s}</option>)}
+              <option value="Outro">Outro / ainda não sei</option>
+            </select>
+            <span>{form.interestLabel || "Serviço de interesse *"}</span>
+            <Icon name="chevron-down" size={18} class="field__chev" />
+          </label>
+        )}
+        <label class="field field--area"><textarea name="mensagem" rows="4" placeholder=" "></textarea><span>Conte um pouco sobre sua necessidade</span></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+        <label class="consent">
+          <input type="checkbox" name="consentimento" required />
+          <span class="consent__box"><Icon name="check" size={14} stroke={3} /></span>
+          <span>{form.consentText || "Autorizo o contato e o tratamento dos meus dados para esta solicitação, conforme a LGPD."}</span>
+        </label>
+        <button class="btn btn--primary btn--lg btn--block" type="submit" data-submit>
+          <span class="btn__label">{form.submitLabel || "Enviar mensagem"}</span>
+          <Icon name="send" size={18} />
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form__status" role="status" aria-live="polite" data-status></p>
+      </form>
+      <div class="form-success" data-success hidden>
+        <span class="form-success__icon"><Icon name="check" size={30} stroke={2.4} /></span>
+        <h3>{form.successTitle || "Mensagem enviada!"}</h3>
+        <p>{form.successText || "Obrigado pelo contato. Nossa equipe retornará em breve."}</p>
+        {c.whatsapp && <a class="btn btn--ghost" href={waLink(c.whatsapp, c.whatsappMessage)} target="_blank" rel="noopener">Prefere agilizar? Chame no WhatsApp</a>}
+      </div>
+    </div>
+  </div>
+</section>

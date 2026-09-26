@@ -1,0 +1,23 @@
+---
+import { site, t } from "../lib/config";
+import Heading from "./Heading.astro";
+const c = site.clients || {};
+const logos = c.logos || [];
+const row = logos.length < 8 ? logos.concat(logos) : logos;
+---
+<section class="section section--tight clients" id="clientes" data-tone={t.tones.clients}>
+  <div class="container">
+    <Heading eyebrow={c.eyebrow} title={c.title} highlight={c.highlight} align="center" />
+  </div>
+  <div class="logo-marquee" data-reveal>
+    <div class="logo-marquee__track">
+      {[0, 1].map(() => (
+        <ul>
+          {row.map((l: any) => (
+            <li>{l.image ? <img src={l.image} alt={l.name} loading="lazy" /> : <span class="wordmark">{l.name}</span>}</li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
