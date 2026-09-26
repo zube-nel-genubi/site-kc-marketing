@@ -1,0 +1,157 @@
+{
+  "lang": "pt-BR",
+  "direction": "tech-ia",
+  "niche": "Agência de marketing digital e automação com IA",
+  "brand": {
+    "name": "K&C Marketing",
+    "tagline": "Marketing digital e automação com IA para negócios que querem crescer sem perder tempo.",
+    "logo": ""
+  },
+  "seo": {
+    "title": "K&C Marketing — Marketing Digital e Automação com IA",
+    "description": "Agência de marketing digital especializada em automação com IA, chatbots, funis de vendas, sites e SEO local para empresas que querem crescer com eficiência.",
+    "url": "https://kcmarketing.com.br",
+    "schemaType": "Organization"
+  },
+  "theme": {
+    "palette": {
+      "name": "Midnight Electric",
+      "base": { "bg": "#07080c", "surface": "#0e1118", "surface2": "#161b26", "text": "#f3f5f9", "muted": "#9aa3b5", "border": "#1f2533" },
+      "alt": { "bg": "#f4f5f8", "surface": "#ffffff", "surface2": "#eceef3", "text": "#0b0d12", "muted": "#5b6475", "border": "#e0e3ea" },
+      "primary": "#4263eb",
+      "onPrimary": "#ffffff",
+      "accent": "#22d3ee"
+    }
+  },
+  "header": { "cta": { "label": "Fale conosco", "href": "#contato" }, "statusLabel": "Atendimento online" },
+  "hero": {
+    "eyebrow": "Marketing Digital · Automação · IA",
+    "title": "Automação e IA para vender mais, todos os dias.",
+    "highlight": "todos os dias.",
+    "subtitle": "A K&C Marketing une automação com inteligência artificial, funis de vendas e presença digital para transformar atendimento em resultado, com processos que trabalham por você em todos os canais.",
+    "ctaPrimary": { "label": "Conheça nossos serviços", "href": "#servicos" },
+    "ctaSecondary": { "label": "Falar com a equipe", "href": "#contato" },
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+    "imageAlt": "Equipe de marketing analisando estratégias em notebooks",
+    "badges": ["Atendimento 24/7 com IA", "Resultados mensuráveis", "Funis sob medida"],
+    "floating": { "value": "5", "label": "anos de mercado automatizando negócios" },
+    "chipsTitle": "Em operação agora"
+  },
+  "marquee": ["Automação com IA", "Chatbots", "Automação de WhatsApp", "Funis de Vendas", "Sites e Landing Pages", "SEO Local", "CRM", "Dashboards"],
+  "about": {
+    "navLabel": "Sobre",
+    "eyebrow": "Quem somos",
+    "title": "Marketing e automação a serviço do seu crescimento.",
+    "highlight": "serviço do seu crescimento.",
+    "text": [
+      "A K&C Marketing é uma agência de marketing digital focada em automação com inteligência artificial. Ajudamos empresas a estruturar atendimento, funis de vendas e presença digital para transformar visitantes em clientes, sem depender de processos manuais e repetitivos.",
+      "Ao longo de 5 anos de mercado, já atendemos dezenas de clientes com chatbots, automação de WhatsApp, CRM e dashboards que dão clareza sobre cada etapa do funil — do primeiro contato ao pós-venda, sempre acompanhando resultados de perto."
+    ],
+    "bullets": ["Diagnóstico antes de qualquer proposta", "Automação com dados reais do seu negócio", "Acompanhamento contínuo dos resultados", "Ferramentas integradas, sem retrabalho"],
+    "image": "https://images.unsplash.com/photo-1758873271772-6bbc792c1514",
+    "imageAlt": "Profissionais analisando dashboard de resultados em um notebook",
+    "card": { "icon": "shield-check", "title": "Dados protegidos", "text": "Automações e integrações seguindo boas práticas de privacidade e LGPD." },
+    "metrics": [
+      { "value": "5", "label": "anos de mercado" },
+      { "value": "33", "prefix": "+", "label": "clientes atendidos" },
+      { "value": "2.150", "prefix": "+", "label": "leads gerados" }
+    ]
+  },
+  "services": {
+    "eyebrow": "O que fazemos",
+    "title": "Automação, atendimento e marketing em um só lugar.",
+    "highlight": "em um só lugar.",
+    "subtitle": "Cada serviço funciona sozinho, mas o melhor resultado aparece quando eles trabalham juntos.",
+    "items": [
+      { "icon": "bot", "title": "Atendimento Inteligente com IA", "short": "Atendimento com IA", "description": "Agentes de IA treinados com as informações da sua empresa atendem, tiram dúvidas e qualificam clientes 24 horas por dia no WhatsApp e outros canais.", "deliverables": ["Agente de IA treinado", "Atendimento 24/7 no WhatsApp", "Qualificação automática de leads"] },
+      { "icon": "zap", "title": "Automação de WhatsApp", "short": "Automação WhatsApp", "description": "Fluxos automáticos de conversas, follow-ups e notificações que recuperam leads parados e mantêm o relacionamento ativo com clientes em todas as etapas.", "deliverables": ["Follow-up automático", "Recuperação de leads", "Notificações personalizadas"] },
+      { "icon": "workflow", "title": "Funis de Vendas e Atendimento", "short": "Funis", "description": "Estruturamos a jornada completa do cliente, do primeiro contato ao pós-venda, com automações que acompanham cada etapa e aumentam a conversão.", "deliverables": ["Mapeamento da jornada", "Automação por etapa", "Acompanhamento de conversão"] },
+      { "icon": "monitor-smartphone", "title": "Sites e Landing Pages", "short": "Sites e Páginas", "description": "Sites institucionais rápidos e responsivos, além de landing pages de alta conversão focadas em campanhas, geração de leads e captação de contatos.", "deliverables": ["Design responsivo", "Landing pages de campanha", "Otimização para conversão"] },
+      { "icon": "search", "title": "Marketing Local e SEO", "short": "SEO Local", "description": "Otimizamos a presença da sua empresa no Google e no Google Maps, com estratégias de SEO local que aumentam a visibilidade para clientes da região.", "deliverables": ["Otimização do perfil Google", "SEO local", "Estratégia de palavras-chave"] },
+      { "icon": "chart-line", "title": "CRM, Dashboards e Automação de Processos", "short": "CRM e Dashboards", "description": "Centralizamos contatos e oportunidades em um CRM, com painéis de indicadores em tempo real e integrações que eliminam tarefas manuais na operação.", "deliverables": ["Implantação de CRM", "Painéis em tempo real", "Redução de tarefas manuais"] }
+    ]
+  },
+  "method": {
+    "eyebrow": "Como trabalhamos",
+    "title": "Um processo claro, do diagnóstico à evolução contínua.",
+    "highlight": "do diagnóstico à evolução contínua.",
+    "subtitle": "Etapas bem definidas para você saber exatamente o que acontece em cada fase do projeto.",
+    "steps": [
+      { "title": "Diagnóstico", "description": "Entendemos seu atendimento, funil e ferramentas atuais para identificar onde a automação gera mais resultado.", "duration": "Semana 1" },
+      { "title": "Estratégia e arquitetura", "description": "Desenhamos os fluxos de atendimento, funis e integrações com escopo e cronograma definidos.", "duration": "Semana 1–2" },
+      { "title": "Implementação", "description": "Construímos os agentes de IA, automações e páginas em ciclos curtos, com validações junto à sua equipe.", "duration": "Semanas 2–5" },
+      { "title": "Lançamento e treinamento", "description": "Colocamos tudo no ar, treinamos sua equipe e entregamos a documentação de cada automação.", "duration": "Entrega" },
+      { "title": "Acompanhamento", "description": "Monitoramos os resultados e ajustamos os fluxos conforme sua operação e seus clientes crescem.", "duration": "Contínuo" }
+    ]
+  },
+  "differentials": {
+    "eyebrow": "Por que a K&C",
+    "title": "Mais clareza, mais controle e crescimento com consistência.",
+    "highlight": "com consistência.",
+    "text": "Automação só faz sentido quando resolve um problema real de atendimento ou vendas. Por isso cada projeto começa pelo seu processo, não pela ferramenta.",
+    "items": [
+      { "icon": "target", "title": "Foco em resultado", "description": "Cada automação é construída para gerar leads, vendas ou tempo economizado de verdade." },
+      { "icon": "bot", "title": "IA aplicada ao seu negócio", "description": "Agentes treinados com as informações reais da sua empresa, não respostas genéricas." },
+      { "icon": "layers", "title": "Tudo integrado", "description": "Site, atendimento, CRM e automações conversando entre si, sem retrabalho manual." },
+      { "icon": "headset", "title": "Suporte próximo", "description": "Uma equipe que acompanha de perto cada etapa, do diagnóstico à evolução contínua." }
+    ]
+  },
+  "clients": {
+    "enabled": true,
+    "eyebrow": "Quem confia",
+    "title": "Empresas que já automatizaram com a gente",
+    "logos": [
+      { "name": "VittaCare Clínica Integrada" },
+      { "name": "Instituto Prime Saúde" },
+      { "name": "Essenza Estética Avançada" },
+      { "name": "Clínica NovaForma" },
+      { "name": "Oral Concept Odontologia" },
+      { "name": "Instituto Vida Plena" },
+      { "name": "MedCenter Especialidades" }
+    ]
+  },
+  "testimonials": {
+    "enabled": true,
+    "eyebrow": "Depoimentos",
+    "title": "O que dizem nossos clientes",
+    "items": [
+      { "quote": "A automação transformou completamente nosso atendimento. Hoje conseguimos responder os pacientes muito mais rápido e não perdemos oportunidades por falta de retorno.", "name": "Camila Rodrigues", "role": "Clínica Vida Plena", "company": "São Paulo/SP" },
+      { "quote": "Além de melhorar o atendimento, passamos a ter muito mais organização na gestão dos leads. A equipe consegue acompanhar cada oportunidade e entender onde estamos perdendo clientes.", "name": "Rafael Mendes", "role": "CEO, Instituto Prime Saúde", "company": "Santo André/SP" },
+      { "quote": "O resultado que mais percebemos foi a agilidade. O sistema atende, qualifica e direciona os contatos mesmo quando nossa equipe está ocupada. Isso fez uma diferença enorme na rotina.", "name": "Juliana Martins", "role": "Clínica Estética Essenza", "company": "Campinas/SP" },
+      { "quote": "A integração entre marketing, atendimento e vendas trouxe uma visão muito mais clara do nosso processo comercial. Hoje conseguimos acompanhar os resultados de forma muito mais profissional.", "name": "Fernando Almeida", "role": "Diretor Comercial, Grupo Nova Saúde", "company": "Rio de Janeiro/RJ" },
+      { "quote": "Antes, muitos contatos ficavam sem resposta. Com a automação, conseguimos dar retorno imediato e manter o relacionamento com os pacientes de forma muito mais consistente.", "name": "Patrícia Oliveira", "role": "OdontoPrime", "company": "Curitiba/PR" },
+      { "quote": "A equipe ganhou tempo para se concentrar no atendimento enquanto as tarefas repetitivas passaram a ser automatizadas. Foi uma mudança importante na operação.", "name": "Marcos Ferreira", "role": "Clínica Performance", "company": "Belo Horizonte/MG" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Dúvidas frequentes",
+    "title": "Perguntas que sempre aparecem",
+    "subtitle": "Se a sua não estiver aqui, fale com a gente — respondemos rápido.",
+    "items": [
+      { "q": "Preciso ter conhecimento técnico para usar as automações?", "a": "Não. Entregamos os agentes de IA, automações e sistemas já configurados e testados, com um treinamento simples para sua equipe usar no dia a dia sem dificuldade." },
+      { "q": "Quanto tempo leva para implementar a automação de atendimento?", "a": "Depende da complexidade, mas a maioria dos projetos de automação com IA fica pronta entre 2 e 5 semanas, incluindo testes e ajustes finais." },
+      { "q": "A automação substitui completamente o atendimento humano?", "a": "Não. A IA cuida do primeiro contato, das dúvidas frequentes e da qualificação, e transfere para sua equipe nos momentos que realmente precisam de atenção humana." },
+      { "q": "Vocês atendem empresas de qualquer segmento?", "a": "Sim. Já implementamos automação de atendimento, funis e CRM para clínicas, consultórios e outros negócios que precisam organizar leads e agilizar o atendimento." },
+      { "q": "Como funciona a criação de sites e landing pages?", "a": "Desenvolvemos o site ou a landing page com base nos seus objetivos, integrado ao WhatsApp, ao CRM e às automações, para transformar visitas em contato real." },
+      { "q": "O que preciso ter pronto antes de começar um projeto?", "a": "Basta ter clareza sobre seus serviços e seu atendimento atual. Nós cuidamos do diagnóstico, do desenho da automação e da implementação de ponta a ponta." },
+      { "q": "Como acompanho os resultados das automações?", "a": "Você recebe painéis com indicadores de leads, atendimento e vendas atualizados automaticamente, além de relatórios periódicos sobre o desempenho de cada automação." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contato",
+    "title": "Pronto para automatizar seu atendimento?",
+    "highlight": "automatizar seu atendimento?",
+    "text": "Conte o que sua empresa precisa. Nossa equipe responde com um diagnóstico inicial e os próximos passos para automatizar seu atendimento e vendas.",
+    "email": "contato@kcmarketing.com.br",
+    "whatsapp": "5513996452577",
+    "whatsappDisplay": "(13) 99645-2577",
+    "whatsappMessage": "Olá! Vim pelo site da K&C Marketing e gostaria de saber mais sobre os serviços.",
+    "phone": "",
+    "address": "",
+    "hours": "",
+    "socials": [],
+    "form": { "provider": "mailto", "endpoint": "", "accessKey": "", "title": "Envie sua mensagem", "subtitle": "Nossa equipe entra em contato o quanto antes." }
+  },
+  "footer": { "headline": "Pronto para colocar seu atendimento no automático?", "ctaLabel": "Iniciar uma conversa", "legalName": "K&C Marketing", "cnpj": "" },
+  "whatsappButton": { "title": "K&C Marketing", "text": "Olá! 👋 Quer automatizar seu atendimento? Fale com a gente.", "label": "Fale conosco" }
+}

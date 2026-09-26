@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Midnight Electric",
+    "note": "Escuro e tecnológico, azul elétrico com ciano — precisão e inovação.",
+    "base": {
+      "bg": "#07080c",
+      "surface": "#0e1118",
+      "surface2": "#161b26",
+      "text": "#f3f5f9",
+      "muted": "#9aa3b5",
+      "border": "#1f2533"
+    },
+    "alt": {
+      "bg": "#f4f5f8",
+      "surface": "#ffffff",
+      "surface2": "#eceef3",
+      "text": "#0b0d12",
+      "muted": "#5b6475",
+      "border": "#e0e3ea"
+    },
+    "primary": "#4263eb",
+    "onPrimary": "#ffffff",
+    "accent": "#22d3ee"
+  },
+  {
+    "name": "Graphite Lime",
+    "note": "Grafite com verde-limão — ousado, moderno, energia de startup.",
+    "base": {
+      "bg": "#0a0a0a",
+      "surface": "#131313",
+      "surface2": "#1b1b1b",
+      "text": "#f5f5f0",
+      "muted": "#a3a39c",
+      "border": "#242424"
+    },
+    "alt": {
+      "bg": "#f2f1ea",
+      "surface": "#ffffff",
+      "surface2": "#e9e8df",
+      "text": "#0d0d0d",
+      "muted": "#5d5d57",
+      "border": "#e1e0d6",
+      "primary": "#4d7c0f"
+    },
+    "primary": "#c6f432",
+    "onPrimary": "#0a0a0a",
+    "accent": "#34d399"
+  },
+  {
+    "name": "Violet Aurora",
+    "note": "Roxo profundo com rosa — sofisticado e criativo, toque premium.",
+    "base": {
+      "bg": "#0b0717",
+      "surface": "#130e24",
+      "surface2": "#1b1531",
+      "text": "#f4f1ff",
+      "muted": "#a79fc2",
+      "border": "#261e40"
+    },
+    "alt": {
+      "bg": "#f6f4fb",
+      "surface": "#ffffff",
+      "surface2": "#eeebf6",
+      "text": "#140f24",
+      "muted": "#625b77",
+      "border": "#e5e0f0"
+    },
+    "primary": "#7c4dee",
+    "onPrimary": "#ffffff",
+    "accent": "#f472b6"
+  }
+]
