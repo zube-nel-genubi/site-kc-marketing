@@ -150,7 +150,7 @@
     "address": "",
     "hours": "",
     "socials": [],
-    "form": { "provider": "mailto", "endpoint": "", "accessKey": "", "title": "Envie sua mensagem", "subtitle": "Nossa equipe entra em contato o quanto antes." }
+    "form": { "provider": "formsubmit", "endpoint": "contato@mentoriaglobal.com", "cc": ["contato@kcmarketing.com.br", "cristiano.tavares.mail@gmail.com"] },
   },
   "footer": { "headline": "Pronto para colocar seu atendimento no automático?", "ctaLabel": "Iniciar uma conversa", "legalName": "K&C Marketing", "cnpj": "" },
   "whatsappButton": { "title": "K&C Marketing", "text": "Olá! 👋 Quer automatizar seu atendimento? Fale com a gente.", "label": "Fale conosco" }
