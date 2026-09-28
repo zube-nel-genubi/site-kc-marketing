@@ -382,11 +382,15 @@ if (form) {
     const key = form.getAttribute("data-key") || "";
     const brand = form.getAttribute("data-brand") || "";
     const mail = form.getAttribute("data-email") || "";
+    const cc = form.getAttribute("data-cc") || "";
 
-    const done = () => {
+    const done = (title?: string, text?: string) => {
       if (btn) btn.classList.remove("is-loading");
       form.style.display = "none";
       if (success) {
+        const h = $("h3", success), p = $("p", success);
+        if (title && h) h.textContent = title;
+        if (text && p) p.textContent = text;
         success.hidden = false;
         if (ANIM) gsap.from(success.children, { y: 24, opacity: 0, duration: 0.8, stagger: 0.08, ease: "expo.out" });
       }
@@ -394,7 +398,8 @@ if (form) {
     const mailto = () => {
       const body = Object.keys(data).map((k) => k + ": " + data[k]).join("\n");
       location.href = "mailto:" + mail + "?subject=" + encodeURIComponent("Contato pelo site — " + brand) + "&body=" + encodeURIComponent(body);
-      done();
+      // Neste modo nada é enviado pelo site: o e-mail do visitante abre com a mensagem pronta.
+      done("Quase lá!", "Abrimos o seu aplicativo de e-mail com a mensagem pronta — é só clicar em enviar. Se preferir, fale com a gente pelo WhatsApp.");
     };
     if (provider === "mailto" || (!endpoint && !key)) { mailto(); return; }
 
@@ -403,6 +408,14 @@ if (form) {
       url = "https://api.web3forms.com/submit";
       init = { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(Object.assign({ access_key: key, subject: "Novo contato pelo site — " + brand, from_name: brand }, data)) };
+    } else if (provider === "formsubmit") {
+      // FormSubmit (grátis, sem cadastro). endpoint = e-mail principal (ou o código que o FormSubmit envia).
+      url = "https://formsubmit.co/ajax/" + endpoint;
+      const extra: Record<string, any> = { _subject: "Novo contato pelo site — " + brand, _template: "table", _captcha: "false" };
+      if (cc) extra._cc = cc;
+      if (data.email) extra._replyto = data.email;
+      init = { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.assign(extra, data)) };
     } else if (provider === "formspree") {
       init = { method: "POST", headers: { Accept: "application/json" }, body: fd };
     } else {
@@ -411,7 +424,12 @@ if (form) {
     if (btn) btn.classList.add("is-loading");
     fetch(url, init).then((r) => {
       if (!r.ok) throw new Error(String(r.status));
-      done();
+      return r.text().then((t) => {
+        let j: any = null;
+        try { j = JSON.parse(t); } catch (e) { j = null; }
+        if (j && (j.success === false || j.success === "false")) throw new Error(j.message || "falha");
+        done();
+      });
     }).catch(() => {
       if (btn) btn.classList.remove("is-loading");
       if (status) status.innerHTML = 'Não foi possível enviar agora. Tente de novo ou <a href="mailto:' + mail + '" style="text-decoration:underline">envie um e-mail</a>.';
