@@ -38,6 +38,7 @@ const infos = [
         data-endpoint={form.endpoint || ""}
         data-key={form.accessKey || ""}
         data-email={c.email || ""}
+        data-cc={Array.isArray(form.cc) ? form.cc.join(",") : (form.cc || "")}
         data-brand={site.brand.name}
         novalidate>
         <div class="form__head">
