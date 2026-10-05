@@ -7,7 +7,10 @@ const words = String(b.name).split(" ");
 ---
 <a href="#topo" class={`logo ${cls}`} aria-label={`${b.name} — início`}>
   {b.logo ? (
-    <img src={b.logo} alt={b.name} height="36" />
+    <picture>
+      <source srcset={b.logo} type="image/webp" />
+      <img src={b.logo.replace(/\.webp$/i, ".png")} alt="K&C Marketing" />
+    </picture>
   ) : (
     <span class="logo__word">
       <span class="logo__mark" aria-hidden="true"></span>

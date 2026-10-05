@@ -116,7 +116,7 @@ h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.015em; }
 
 /* ---------- Header ---------- */
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: transparent; transition: transform .45s cubic-bezier(.2,.8,.2,1), background-color .35s, box-shadow .35s; }
-.header__inner { display: flex; align-items: center; justify-content: space-between; height: 84px; transition: height .35s; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; height: 84px; transition: height .35s; }
 .header.is-scrolled { background: rgba(var(--bg-rgb), .94); box-shadow: 0 1px 0 var(--border); }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .header.is-scrolled { background: rgba(var(--bg-rgb), .72); -webkit-backdrop-filter: saturate(160%) blur(16px); backdrop-filter: saturate(160%) blur(16px); }
@@ -125,13 +125,14 @@ h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.015em; }
 .header.is-hidden { transform: translateY(-100%); }
 
 .logo { white-space: nowrap; flex: none; display: inline-flex; align-items: center; font-family: var(--font-h); font-weight: 700; font-size: 21px; letter-spacing: -.03em; color: var(--text); }
-.logo img { height: 36px; width: auto; }
+.logo picture { display: block; line-height: 0; }
+.logo img { display: block; height: 44px; width: auto; }
 .logo__word { display: inline-flex; align-items: center; }
 .logo__mark { width: 26px; height: 26px; margin-right: 10px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--accent)); position: relative; box-shadow: 0 6px 18px -6px rgba(var(--primary-rgb), .8); }
 .logo__mark::after { content: ""; position: absolute; top: 7px; left: 7px; width: 12px; height: 12px; border-radius: 50%; border: 2.5px solid var(--on-primary); }
 .logo__rest { font-weight: 400; opacity: .75; }
 
-.nav ul { display: flex; gap: 2px; }
+.nav ul { display: flex; gap: 10px; }
 .nav a { position: relative; display: block; white-space: nowrap; padding: 8px 12px; font-size: 14.5px; font-weight: 500; color: var(--muted); border-radius: 999px; transition: color .25s, background-color .25s; }
 .nav a:hover { color: var(--text); }
 .nav a.is-active { color: var(--text); background: rgba(var(--text-rgb), .07); }
@@ -156,6 +157,7 @@ h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.015em; }
 @media (max-width: 1340px) { .status-pill { display: none; } }
 @media (max-width: 1100px) { .nav { display: none; } .burger { display: block; } }
 @media (max-width: 520px) { .header__actions .btn { display: none; } }
+@media (max-width: 640px) { .logo img { height: 36px; } }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 140px 0 110px; overflow: hidden; }
@@ -333,10 +335,10 @@ h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.015em; }
 .logo-marquee__track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
 .logo-marquee:hover .logo-marquee__track { animation-play-state: paused; }
 .logo-marquee ul { display: flex; flex: none; }
-.logo-marquee li { flex: none; width: 210px; height: 96px; margin-right: 16px; display: grid; place-items: center; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
+.logo-marquee li { flex: none; width: 230px; height: 96px; margin-right: 16px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 22px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
 .logo-marquee img { max-height: 40px; max-width: 140px; width: auto; filter: grayscale(1); opacity: .7; transition: filter .3s, opacity .3s; }
 .logo-marquee li:hover img { filter: none; opacity: 1; }
-.wordmark { font-family: var(--font-h); font-weight: 700; font-size: 19px; letter-spacing: -.02em; color: var(--muted); opacity: .85; }
+.wordmark { display: block; width: 100%; text-align: center; line-height: 1.25; font-family: var(--font-h); font-weight: 700; font-size: 19px; letter-spacing: -.02em; color: var(--muted); opacity: .85; }
 
 /* ---------- Depoimentos ---------- */
 .carousel-nav { display: flex; gap: 10px; }

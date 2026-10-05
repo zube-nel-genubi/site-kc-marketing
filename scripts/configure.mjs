@@ -1,8 +1,7 @@
 // Gera arquivos derivados do site.config.json antes de cada build:
 //  - src/styles/fonts.gen.css  (importa só as fontes usadas)
-//  - public/favicon.svg        (monograma com as cores da paleta, se não houver favicon próprio)
 // Também valida os campos essenciais e avisa sobre pendências.
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -31,19 +30,7 @@ for (const role of ["heading", "body"]) {
 mkdirSync(resolve(root, "src/styles"), { recursive: true });
 writeFileSync(resolve(root, "src/styles/fonts.gen.css"), lines.join("\n") + "\n");
 
-// Favicon monograma
 const pal = (theme.palette || {});
-const fav = resolve(root, "public/favicon.svg");
-if (!cfg.brand || !cfg.brand.favicon) {
-  const initials = (cfg.brand && (cfg.brand.monogram || cfg.brand.name) || "S")
-    .split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
-  const bg = pal.primary || "#111";
-  const fg = pal.onPrimary || "#fff";
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="${bg}"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="${initials.length > 1 ? 26 : 34}" fill="${fg}">${initials}</text></svg>`;
-  mkdirSync(resolve(root, "public"), { recursive: true });
-  writeFileSync(fav, svg);
-}
-
 // Validação
 const req = [
   ["brand.name", cfg.brand && cfg.brand.name],

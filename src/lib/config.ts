@@ -17,7 +17,7 @@ theme.headingSerif = !!fh.serif;
 
 const DEFAULT_TONES: Record<string, string> = {
   header: "base", hero: "base", marquee: "brand", about: "alt", services: "base", method: "alt",
-  differentials: "base", clients: "base", testimonials: "alt", faq: "base", contact: "alt", footer: "base"
+  featuredService: "brand", differentials: "base", clients: "base", testimonials: "alt", faq: "base", contact: "alt", footer: "base"
 };
 theme.tones = Object.assign({}, DEFAULT_TONES, theme.tones || {});
 
@@ -58,6 +58,7 @@ export function img(url: string, w = 1600): string {
 export const NAV_DEFAULT = [
   { id: "sobre", section: "about", label: "Sobre" },
   { id: "servicos", section: "services", label: "Serviços" },
+  { id: "servico-destaque", section: "featuredService", label: "Destaque" },
   { id: "metodo", section: "method", label: "Método" },
   { id: "diferenciais", section: "differentials", label: "Diferenciais" },
   { id: "depoimentos", section: "testimonials", label: "Depoimentos" },

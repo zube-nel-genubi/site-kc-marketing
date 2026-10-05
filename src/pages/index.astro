@@ -5,6 +5,7 @@ import Hero from "../components/Hero.astro";
 import Marquee from "../components/Marquee.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
+import FeaturedService from "../components/FeaturedService.astro";
 import Method from "../components/Method.astro";
 import Differentials from "../components/Differentials.astro";
 import Clients from "../components/Clients.astro";
@@ -23,6 +24,7 @@ const hasMarquee = site.marquee !== false;
     {hasMarquee && <Marquee />}
     {on("about") && <About />}
     {on("services") && <Services />}
+    {on("featuredService") && <FeaturedService />}
     {on("method") && <Method />}
     {on("differentials") && <Differentials />}
     {on("clients") && <Clients />}

@@ -1,8 +1,7 @@
 ---
-import { site, t, nav, waLink } from "../lib/config";
+import { site, t, nav } from "../lib/config";
 import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
-const c = site.contact || {};
 const cta = (site.header && site.header.cta) || { label: "Fale conosco", href: "#contato" };
 ---
 <header class="header" data-tone={t.tones.header} data-header>
@@ -14,11 +13,6 @@ const cta = (site.header && site.header.cta) || { label: "Fale conosco", href: "
       </ul>
     </nav>
     <div class="header__actions">
-      {c.whatsapp && (
-        <a class="status-pill" href={waLink(c.whatsapp, c.whatsappMessage)} target="_blank" rel="noopener">
-          <span class="status-dot"></span>{(site.header && site.header.statusLabel) || "Atendimento online"}
-        </a>
-      )}
       <a class="btn btn--primary btn--sm" href={cta.href} data-magnetic>{cta.label}<Icon name="arrow-up-right" size={16} /></a>
       <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" data-burger><span></span><span></span></button>
     </div>

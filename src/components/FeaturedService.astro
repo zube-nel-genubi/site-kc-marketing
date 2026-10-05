@@ -1,0 +1,183 @@
+---
+import { site, t } from "../lib/config";
+import Icon from "./Icon.astro";
+const s = site.featuredService || {};
+const demo = s.demo || {};
+const metrics = demo.metrics || [];
+const messages = demo.messages || [];
+---
+<section class="section featured-service" id="servico-destaque" data-tone={t.tones.featuredService}>
+  <div class="featured-service__glow" aria-hidden="true"></div>
+  <div class="container featured-service__grid">
+    <div class="featured-service__copy" data-reveal-group>
+      <p class="featured-service__eyebrow" data-reveal><span></span>{s.eyebrow}</p>
+      <h2 class="title" data-split>{s.title}</h2>
+      <p class="featured-service__subtitle" data-reveal>{s.subtitle}</p>
+      <ul class="featured-service__benefits" data-reveal-group>
+        {(s.benefits || []).map((benefit: string) => (
+          <li data-reveal><Icon name="circle-check" size={19} />{benefit}</li>
+        ))}
+      </ul>
+      <a class="btn btn--primary featured-service__cta" href={s.ctaHref || "https://mentoriaglobal.com/"} target="_blank" rel="noopener noreferrer">
+        {s.ctaLabel}<Icon name="arrow-up-right" size={18} />
+      </a>
+    </div>
+
+    <div class="featured-service__visual" data-feature-demo aria-label="Demonstração do atendimento e painel CRM">
+      <div class="crm-demo" data-float>
+        <div class="crm-demo__top">
+          <div class="crm-demo__brand"><span class="crm-demo__mark"><Icon name="activity" size={16} /></span><strong>{demo.dashboardTitle}</strong></div>
+          <span class="crm-demo__period">{demo.periodLabel}</span>
+        </div>
+        <div class="crm-demo__metrics">
+          {metrics.map((metric: any, i: number) => (
+            <article class="crm-metric">
+              <span class="crm-metric__label">{metric.label}</span>
+              <strong><span data-demo-count={metric.value} data-suffix={metric.suffix}>{metric.value}{metric.suffix}</span></strong>
+              <small>{metric.trend} <span>{demo.comparisonLabel}</span></small>
+              <i class={`crm-metric__spark crm-metric__spark--${i + 1}`} aria-hidden="true"></i>
+            </article>
+          ))}
+        </div>
+        <div class="crm-chart">
+          <div class="crm-chart__heading"><strong>{demo.chartTitle}</strong><span>{demo.chartTrend}</span></div>
+          <svg class="crm-chart__graph" viewBox="0 0 360 112" role="img" aria-label={demo.chartTitle}>
+            <path class="crm-chart__gridline" d="M0 25H360M0 57H360M0 89H360" />
+            <path class="crm-chart__area" d="M0 88 C24 81 26 49 52 57 S83 75 108 51 S143 66 168 37 S202 54 225 40 S259 59 282 25 S321 44 360 12 V112 H0Z" />
+            <path class="crm-chart__line" data-demo-chart d="M0 88 C24 81 26 49 52 57 S83 75 108 51 S143 66 168 37 S202 54 225 40 S259 59 282 25 S321 44 360 12" />
+          </svg>
+          <div class="crm-chart__days">{(demo.chartDays || []).map((day: string) => <span>{day}</span>)}</div>
+        </div>
+        <div class="crm-leads">
+          <strong>{demo.leadsTitle}</strong>
+          {(demo.leadNames || []).map((name: string, i: number) => (
+            <div class="crm-lead"><span class="crm-lead__avatar">{name.slice(0, 1)}</span><span>{name}</span><small>{demo.leadStatuses?.[i]}</small></div>
+          ))}
+        </div>
+      </div>
+
+      <div class="chat-demo">
+        <div class="chat-demo__top">
+          <span class="chat-demo__back" aria-hidden="true">‹</span>
+          <span class="chat-demo__avatar"><Icon name="heart-handshake" size={18} /></span>
+          <span class="chat-demo__identity"><strong>{demo.contactName}</strong><small>{demo.onlineLabel}</small></span>
+          <Icon name="phone" size={17} class="chat-demo__phone" />
+        </div>
+        <div class="chat-demo__body">
+          <span class="chat-demo__date">{demo.dateLabel}</span>
+          {messages.map((message: any) => (
+            <p class={`chat-demo__message chat-demo__message--${message.kind}`} data-feature-message>{message.text}</p>
+          ))}
+          <div class="chat-demo__typing" data-feature-typing><span></span><span></span><span></span><small>{demo.typingLabel}</small></div>
+          <div class="chat-demo__confirmation" data-feature-confirmation>
+            <span><Icon name="calendar-check" size={17} /></span>
+            <div><strong>{demo.confirmation}</strong><small>{demo.appointment}</small></div>
+            <Icon name="check" size={16} class="chat-demo__check" />
+          </div>
+        </div>
+        <div class="chat-demo__input"><span>{demo.inputPlaceholder}</span><Icon name="send" size={16} /></div>
+      </div>
+      <span class="featured-service__orbit featured-service__orbit--one" aria-hidden="true"></span>
+      <span class="featured-service__orbit featured-service__orbit--two" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-service { isolation: isolate; background: var(--primary); color: var(--on-primary); }
+  .featured-service__glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 76% 48%, rgba(34, 211, 238, .26), transparent 42%), linear-gradient(115deg, transparent 42%, rgba(4, 18, 50, .2)); }
+  .featured-service__grid { display: grid; grid-template-columns: minmax(320px, .82fr) minmax(0, 1.18fr); gap: 50px; align-items: center; }
+  .featured-service__copy { position: relative; z-index: 2; }
+  .featured-service__eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-primary); }
+  .featured-service__eyebrow span { width: 9px; height: 9px; border-radius: 50%; background: #35e7c2; box-shadow: 0 0 16px rgba(53, 231, 194, .8); }
+  .featured-service .title { max-width: 570px; color: var(--on-primary); }
+  .featured-service .title em { color: #61e4ed; background: none; -webkit-text-fill-color: #61e4ed; }
+  .featured-service__subtitle { max-width: 490px; margin-top: 24px; color: rgba(255,255,255,.78); font-size: 17px; line-height: 1.7; }
+  .featured-service__benefits { display: grid; gap: 14px; margin-top: 30px; }
+  .featured-service__benefits li { display: flex; align-items: flex-start; gap: 11px; color: rgba(255,255,255,.94); font-size: 15px; line-height: 1.5; }
+  .featured-service__benefits .icon { flex: none; color: #54ebc2; margin-top: 1px; }
+  .featured-service__cta { margin-top: 34px; background: #fff; color: #111d35; box-shadow: 0 12px 32px rgba(5, 16, 46, .22); }
+  .featured-service__cta:hover { background: #e9fbff; }
+  .featured-service__visual { min-width: 0; min-height: 530px; position: relative; perspective: 1200px; }
+  .crm-demo { position: absolute; top: 42px; right: 0; width: min(100%, 540px); padding: 20px; border: 1px solid rgba(164, 208, 255, .24); border-radius: 14px; background: #111d31; color: #f5f8ff; box-shadow: 0 28px 70px rgba(3, 12, 31, .46); transform: rotateY(-8deg) rotateX(2deg); }
+  .crm-demo__top, .crm-demo__brand { display: flex; align-items: center; }
+  .crm-demo__top { justify-content: space-between; margin-bottom: 17px; }
+  .crm-demo__brand { gap: 9px; font-size: 13px; }
+  .crm-demo__mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 8px; background: rgba(34, 211, 238, .13); color: #4fe0e5; }
+  .crm-demo__period { color: #9aabc4; font-size: 10px; }
+  .crm-demo__metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+  .crm-metric { position: relative; min-width: 0; overflow: hidden; padding: 12px 10px 11px; border: 1px solid rgba(174, 200, 235, .1); border-radius: 9px; background: #192840; }
+  .crm-metric__label { display: block; min-height: 28px; color: #a8b7cf; font-size: 9px; line-height: 1.35; }
+  .crm-metric strong { display: block; margin: 5px 0 2px; font-family: var(--font-h); font-size: 21px; line-height: 1.1; }
+  .crm-metric small { color: #43d8ad; font-size: 9px; }
+  .crm-metric small span { color: #8494ac; }
+  .crm-metric__spark { position: absolute; right: 8px; top: 12px; width: 25px; height: 12px; border-top: 1px solid #3fd7bc; transform: skewY(-18deg); opacity: .75; }
+  .crm-metric__spark--2 { transform: skewY(15deg); border-color: #5eb3ff; }
+  .crm-metric__spark--3 { transform: skewY(-8deg); border-color: #f8c45b; }
+  .crm-chart { margin-top: 11px; padding: 13px 13px 8px; border: 1px solid rgba(174, 200, 235, .1); border-radius: 9px; background: #17253a; }
+  .crm-chart__heading { display: flex; justify-content: space-between; align-items: center; font-size: 10px; }
+  .crm-chart__heading span { color: #4ce0b6; font-size: 9px; }
+  .crm-chart__graph { width: 100%; margin-top: 9px; overflow: visible; }
+  .crm-chart__gridline { fill: none; stroke: rgba(201, 216, 239, .1); stroke-width: 1; stroke-dasharray: 3 4; }
+  .crm-chart__area { fill: rgba(58, 194, 211, .09); }
+  .crm-chart__line { fill: none; stroke: #48d9d0; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .crm-chart__days { display: flex; justify-content: space-between; color: #8494ac; font-size: 8px; }
+  .crm-leads { margin-top: 11px; padding: 12px; border: 1px solid rgba(174, 200, 235, .1); border-radius: 9px; background: #17253a; }
+  .crm-leads > strong { display: block; margin-bottom: 8px; font-size: 10px; }
+  .crm-lead { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 8px; padding: 6px 0; color: #dbe6f6; font-size: 9px; }
+  .crm-lead + .crm-lead { border-top: 1px solid rgba(174, 200, 235, .08); }
+  .crm-lead__avatar { display: grid; width: 22px; height: 22px; place-items: center; border-radius: 50%; background: rgba(89, 188, 255, .18); color: #74c5ff; }
+  .crm-lead small { color: #4edbb3; font-size: 8px; }
+  .chat-demo { position: absolute; z-index: 1; top: 0; left: 3%; width: 255px; padding: 9px; border: 1px solid rgba(255,255,255,.46); border-radius: 32px; background: linear-gradient(145deg, #e8f3fb, #6a7d9b 14%, #101b2a 21%, #0a1420 83%, #5d718b); box-shadow: 0 32px 60px rgba(1, 11, 33, .5), inset 0 0 0 2px rgba(5, 16, 36, .8); transform: rotate(-5deg); }
+  .chat-demo::before { content: ""; position: absolute; z-index: 3; top: 12px; left: 50%; width: 72px; height: 15px; border-radius: 12px; background: #050a10; transform: translateX(-50%); }
+  .chat-demo__top { display: flex; min-height: 63px; align-items: center; gap: 8px; padding: 14px 11px 5px; border-radius: 24px 24px 0 0; background: #102337; color: white; }
+  .chat-demo__back { color: #7ce5d3; font-size: 27px; line-height: 1; }
+  .chat-demo__avatar { display: grid; width: 32px; height: 32px; flex: none; place-items: center; border: 1px solid #33d2c2; border-radius: 50%; color: #4be2d0; }
+  .chat-demo__identity { display: grid; min-width: 0; flex: 1; }
+  .chat-demo__identity strong { overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+  .chat-demo__identity small { color: #8ca5bc; font-size: 8px; }
+  .chat-demo__phone { color: #b7c9d7; }
+  .chat-demo__body { display: flex; min-height: 370px; flex-direction: column; gap: 10px; padding: 14px 9px; border-radius: 0 0 19px 19px; background-color: #0d1c28; background-image: radial-gradient(rgba(99, 152, 168, .1) .7px, transparent .7px); background-size: 11px 11px; }
+  .chat-demo__date { align-self: center; padding: 3px 10px; border-radius: 12px; background: #1b3040; color: #b8c8d6; font-size: 8px; }
+  .chat-demo__message { max-width: 87%; padding: 9px 10px; border-radius: 11px; color: #edf5f5; font-size: 10px; line-height: 1.45; box-shadow: 0 3px 8px rgba(0,0,0,.12); }
+  .chat-demo__message--incoming { align-self: flex-start; background: #1b3040; border-bottom-left-radius: 3px; }
+  .chat-demo__message--outgoing { align-self: flex-end; background: #075e55; border-bottom-right-radius: 3px; }
+  .chat-demo__typing { display: flex; width: max-content; max-width: 100%; align-items: center; gap: 3px; padding: 8px 9px; border-radius: 10px; background: #1b3040; }
+  .chat-demo__typing > span { width: 4px; height: 4px; border-radius: 50%; background: #a7c2c9; }
+  .chat-demo__typing small { margin-left: 5px; color: #a9bac6; font-size: 8px; }
+  .chat-demo__confirmation { display: flex; align-items: center; gap: 7px; padding: 9px 8px; border: 1px solid rgba(71, 226, 183, .32); border-radius: 9px; background: rgba(7, 94, 85, .32); color: #f4fffb; }
+  .chat-demo__confirmation > span { color: #56dfb6; }
+  .chat-demo__confirmation div { display: grid; flex: 1; gap: 3px; }
+  .chat-demo__confirmation strong { font-size: 9px; }
+  .chat-demo__confirmation small { color: #b8d5cf; font-size: 8px; line-height: 1.35; }
+  .chat-demo__check { color: #56dfb6; }
+  .chat-demo__input { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding: 8px 11px; border-radius: 18px; background: #172b3b; color: #8297a8; font-size: 9px; }
+  .chat-demo__input .icon { color: #4cddc7; }
+  .featured-service__orbit { position: absolute; border: 1px solid rgba(98, 229, 235, .23); border-radius: 50%; pointer-events: none; }
+  .featured-service__orbit--one { top: 55px; right: -32px; width: 500px; height: 390px; transform: rotate(-18deg); }
+  .featured-service__orbit--two { top: 90px; right: 2px; width: 410px; height: 320px; transform: rotate(17deg); }
+  @media (max-width: 1000px) {
+    .featured-service__grid { grid-template-columns: 1fr; gap: 52px; }
+    .featured-service__copy { max-width: 700px; }
+    .featured-service__visual { width: min(100%, 650px); min-height: 530px; margin: 0 auto; }
+    .chat-demo { left: 7%; }
+    .crm-demo { right: 2%; }
+  }
+  @media (max-width: 600px) {
+    .featured-service__grid { gap: 36px; }
+    .featured-service__eyebrow { margin-bottom: 18px; }
+    .featured-service__subtitle { font-size: 16px; }
+    .featured-service__cta { width: 100%; white-space: normal; text-align: center; }
+    .featured-service__visual { min-height: 445px; width: 100%; }
+    .crm-demo { top: 44px; right: -8px; width: 82%; padding: 12px; transform: rotateY(-5deg) rotateX(1deg) scale(.9); transform-origin: top right; }
+    .crm-demo__metrics { gap: 5px; }
+    .crm-metric { padding: 9px 7px; }
+    .crm-metric__label { font-size: 8px; }
+    .crm-metric strong { font-size: 17px; }
+    .chat-demo { top: 0; left: 0; width: 205px; border-radius: 27px; transform: rotate(-4deg) scale(.9); transform-origin: top left; }
+    .chat-demo__body { min-height: 333px; gap: 8px; padding: 11px 8px; }
+    .chat-demo__message { font-size: 9px; }
+    .featured-service__orbit--one { top: 36px; right: -45px; width: 330px; height: 300px; }
+    .featured-service__orbit--two { top: 70px; right: -20px; width: 270px; height: 240px; }
+  }
+</style>

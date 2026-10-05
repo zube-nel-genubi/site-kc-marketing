@@ -5,7 +5,8 @@
   "brand": {
     "name": "K&C Marketing",
     "tagline": "Marketing digital e automação com IA para negócios que querem crescer sem perder tempo.",
-    "logo": ""
+    "logo": "/logo-kc.webp",
+    "favicon": "/favicon.ico"
   },
   "seo": {
     "title": "K&C Marketing — Marketing Digital e Automação com IA",
@@ -70,6 +71,48 @@
       { "icon": "search", "title": "Marketing Local e SEO", "short": "SEO Local", "description": "Otimizamos a presença da sua empresa no Google e no Google Maps, com estratégias de SEO local que aumentam a visibilidade para clientes da região.", "deliverables": ["Otimização do perfil Google", "SEO local", "Estratégia de palavras-chave"] },
       { "icon": "chart-line", "title": "CRM, Dashboards e Automação de Processos", "short": "CRM e Dashboards", "description": "Centralizamos contatos e oportunidades em um CRM, com painéis de indicadores em tempo real e integrações que eliminam tarefas manuais na operação.", "deliverables": ["Implantação de CRM", "Painéis em tempo real", "Redução de tarefas manuais"] }
     ]
+  },
+  "featuredService": {
+    "navLabel": "Destaque",
+    "eyebrow": "Nosso carro-chefe",
+    "title": "Atendimento no WhatsApp com IA + Dashboard com CRM",
+    "highlight": "WhatsApp com IA",
+    "subtitle": "Conversas que viram oportunidades: uma IA atende seus clientes e um CRM inteligente mantém cada resultado à vista.",
+    "benefits": [
+      "Respostas rápidas, 24 horas por dia",
+      "Agendamentos confirmados direto na conversa",
+      "Leads e resultados organizados em um só painel"
+    ],
+    "ctaLabel": "Conheça a solução completa",
+    "ctaHref": "https://mentoriaglobal.com/",
+    "demo": {
+      "contactName": "Clínica Aurora",
+      "onlineLabel": "assistente IA online",
+      "dateLabel": "Hoje",
+      "periodLabel": "Últimos 7 dias",
+      "comparisonLabel": "neste mês",
+      "chartTrend": "+24,6%",
+      "inputPlaceholder": "Mensagem",
+      "messages": [
+        { "text": "Oi! Vocês têm horário amanhã?", "kind": "incoming" },
+        { "text": "Temos sim! Amanhã às 10h30 com a Dra. Helena. Posso reservar?", "kind": "outgoing" },
+        { "text": "Pode confirmar pra mim?", "kind": "incoming" }
+      ],
+      "typingLabel": "Clínica Aurora está digitando…",
+      "confirmation": "Agendamento confirmado",
+      "appointment": "Amanhã, às 10h30 · Dra. Helena",
+      "dashboardTitle": "Visão geral",
+      "metrics": [
+        { "value": 235, "suffix": "", "label": "Conversas atendidas", "trend": "+18%" },
+        { "value": 68.8, "suffix": "%", "label": "Taxa de conversão", "trend": "+6,2%" },
+        { "value": 32, "suffix": "", "label": "Agendamentos", "trend": "+12%" }
+      ],
+      "chartTitle": "Atendimentos na semana",
+      "chartDays": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+      "leadsTitle": "Últimos contatos",
+      "leadNames": ["Marina Costa", "Rafael Lima"],
+      "leadStatuses": ["Agendado", "Novo lead"]
+    }
   },
   "method": {
     "eyebrow": "Como trabalhamos",

@@ -201,6 +201,56 @@ if (ANIM) {
     gsap.to(el, { y: i % 2 ? 12 : -12, duration: 3.2 + i * 0.4, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1.5 });
   });
 
+  // Demonstração animada de conversa e CRM
+  const featureDemo = $<HTMLElement>("[data-feature-demo]");
+  if (featureDemo) {
+    const messages = $$<HTMLElement>("[data-feature-message]", featureDemo);
+    const typing = $<HTMLElement>("[data-feature-typing]", featureDemo);
+    const confirmation = $<HTMLElement>("[data-feature-confirmation]", featureDemo);
+    const sequence = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 1.2,
+      scrollTrigger: { trigger: featureDemo, start: "top 78%", toggleActions: "play pause resume pause" }
+    });
+
+    sequence.set([...messages, typing, confirmation].filter(Boolean), { autoAlpha: 0, y: 12 });
+    messages.forEach((message, i) => {
+      if (i === 1 && typing) {
+        sequence.to(typing, { autoAlpha: 1, y: 0, duration: 0.25 }, ">+=0.25")
+          .to(typing, { autoAlpha: 0, y: -4, duration: 0.2 }, "+=0.7");
+      }
+      sequence.to(message, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, ">+=0.2");
+    });
+    if (typing && confirmation) {
+      sequence.to(typing, { autoAlpha: 1, y: 0, duration: 0.25 }, ">+=0.35")
+        .to(typing, { autoAlpha: 0, y: -4, duration: 0.2 }, "+=0.75")
+        .to(confirmation, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, ">+=0.15");
+    }
+    sequence.to([...messages, typing, confirmation].filter(Boolean), { autoAlpha: 0, y: -8, duration: 0.3 }, "+=2.4");
+
+    $$<HTMLElement>("[data-demo-count]", featureDemo).forEach((element) => {
+      const target = Number(element.dataset.demoCount);
+      const precision = String(target).split(".")[1]?.length || 0;
+      const suffix = element.dataset.suffix || "";
+      const counter = { value: 0 };
+      element.textContent = `${counter.value}${suffix}`;
+      gsap.to(counter, {
+        value: target,
+        duration: 1.8,
+        ease: "power2.out",
+        scrollTrigger: { trigger: featureDemo, start: "top 78%", once: true },
+        onUpdate: () => { element.textContent = `${counter.value.toFixed(precision).replace(".", ",")}${suffix}`; }
+      });
+    });
+
+    const chart = $<SVGPathElement>("[data-demo-chart]", featureDemo);
+    if (chart) {
+      const length = chart.getTotalLength();
+      gsap.set(chart, { strokeDasharray: length, strokeDashoffset: length });
+      gsap.to(chart, { strokeDashoffset: 0, duration: 2, ease: "power2.out", scrollTrigger: { trigger: featureDemo, start: "top 78%", once: true } });
+    }
+  }
+
   // Linha do tempo do método
   const fill = $("[data-timeline-fill]");
   const tlEl = $("[data-timeline]");
